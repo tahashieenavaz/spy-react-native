@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Text, View } from "react-native";
 import Homepage from "./components/pages/Homepage";
 import SettingsPage from "./components/pages/SettingsPage";
+import GamePage from "./components/pages/GamePage";
 
 const Stack = createNativeStackNavigator();
 
