@@ -1,40 +1,19 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Alert, Pressable } from "react-native";
-import Button from "./components/Button";
-import Logo from "./Logo";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Text, View } from "react-native";
+import Homepage from "./components/pages/Homepage";
+import SettingsPage from "./components/pages/SettingsPage";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Logo />
-      <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 70 }}>
-        S.P.Y
-      </Text>
-      <Text
-        style={{
-          color: "#fff",
-          fontWeight: "100",
-          fontSize: 27,
-          opacity: 0.5,
-        }}
-      >
-        Divide & Rule
-      </Text>
-      <Button
-        style={{ marginTop: 40 }}
-        onPress={() => Alert.alert("Good", "asdasd")}
-        title="Start"
-      />
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Homepage" component={Homepage} />
+        <Stack.Screen name="Settings" component={SettingsPage} />
+        <Stack.Screen name="GamePage" component={GamePage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#00297A",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
