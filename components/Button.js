@@ -1,25 +1,30 @@
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text } from 'react-native';
 
-export default function Button({ title = "Go", onPress, style }) {
+export default function Button({
+  title = 'Go',
+  textColor = null,
+  onPress,
+  style,
+}) {
+  if (!textColor) textColor = '#222';
   return (
     <Pressable style={{ ...styles.button, ...style }} onPress={onPress}>
-      <Text style={styles.text}>{title}</Text>
+      <Text style={{ ...styles.text, color: textColor }}>{title}</Text>
     </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
   button: {
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fff",
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#fff',
     borderRadius: 3,
     paddingHorizontal: 20,
     paddingVertical: 10,
   },
   text: {
-    color: "#222",
-    fontWeight: "bold",
-    textTransform: "uppercase",
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
 });

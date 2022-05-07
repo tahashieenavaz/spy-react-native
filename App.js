@@ -20,7 +20,6 @@ export default function App() {
           <Stack.Screen name="Settings" component={SettingsPage} />
           <Stack.Screen name="Game" component={GamePage} />
         </Stack.Group>
-
         <Stack.Group options={{ presenation: 'modal' }}></Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
