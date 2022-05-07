@@ -1,8 +1,9 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Modal, Pressable } from 'react-native';
 import { falseArray, randomizeArray, trueArray } from '../../helpers';
 import words from '../../words.json';
+import PlayerButtons from '../PlayerButtons';
 
-export default function SettingsPage({ route }) {
+export default function SettingsPage({ route, navigation }) {
   const { spyCount, playerCount } = route.params;
   const theWord = words[~~(Math.random() * words.length)];
   /**
@@ -15,10 +16,14 @@ export default function SettingsPage({ route }) {
     ...falseArray(playerCount),
     ...trueArray(spyCount),
   ]);
+
   return (
-    <View style={styles.container}>
-      <Text>GamePage Page {theWord}</Text>
-    </View>
+    <PlayerButtons
+      playerStack={playerStack}
+      playerCount={playerCount}
+      spyCount={spyCount}
+      navigation={navigation}
+    />
   );
 }
 
