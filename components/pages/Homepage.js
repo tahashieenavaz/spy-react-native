@@ -26,7 +26,7 @@ export default function Homepage({ navigation }) {
         <Button
           style={{ marginTop: 40 }}
           onPress={() =>
-            navigation.navigate("Details", {
+            navigation.navigate("Settings", {
               randomNumber: ~~(200 * Math.random()),
             })
           }
