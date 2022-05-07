@@ -1,20 +1,30 @@
 import { View, Text } from 'react-native';
 
-export default function ShowRulePage() {
+export default function ShowRulePage({ route }) {
+  const { isSpy, theWord } = route.params;
+
+  let toShow = null;
+  if (isSpy) {
+    toShow = 'You are an SPY!';
+  } else {
+    toShow = theWord;
+  }
+
   return (
     <View
-      style={{ flex: 1, flexDirection: 'column', justifyContent: 'flex-end' }}
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
     >
-      <View
+      <Text
         style={{
-          height: '50%',
-          width: '100%',
-          backgroundColor: '#fff',
-          justifyContent: 'center',
+          fontSize: 30,
         }}
       >
-        <Text>Testing a modal with transparent background</Text>
-      </View>
+        {toShow}
+      </Text>
     </View>
   );
 }
