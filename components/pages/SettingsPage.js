@@ -1,10 +1,19 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Alert } from 'react-native';
 import Button from '../Button';
 
 export default function SettingsPage({ navigation }) {
   const [playerCount, setPlayerCount] = useState(10);
   const [spyCount, setSpyCount] = useState(2);
+
+  const validateInputsAndSubmit = () => {
+    if (playerCount <= spyCount) {
+      Alert.alert('Warning', 'The game cannot handle too many spies!');
+      return false;
+    }
+    navigation.navigate('Game', { playerCount, spyCount });
+    return true;
+  };
 
   return (
     <View style={styles.container}>
@@ -27,7 +36,7 @@ export default function SettingsPage({ navigation }) {
           title="Play!"
           textColor="white"
           style={styles.button}
-          onPress={() => navigation.navigate('Game', { playerCount, spyCount })}
+          onPress={validateInputsAndSubmit}
         />
       </View>
     </View>
